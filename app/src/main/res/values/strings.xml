@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">iCare</string>
+
+    <!--
+        Standard for naming strings:
+            <name_of_activity>+<str>+<id of the string>
+     -->
+
+
+    <!-- Activity Login Strings -->
+    <string name="activity_login_str1">Você é idoso ou cuidador?</string>
+    <string name="activity_login_str2">Idoso</string>
+    <string name="activity_login_str3">Cuidador</string>
+
+    <!-- Acitivity GoogleAuthentication Strings -->
+    <string name="acitivity_googleauthentication_str1">Insira sua conta GMail:</string>
+
 </resources>

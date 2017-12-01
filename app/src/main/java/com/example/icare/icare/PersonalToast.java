@@ -15,34 +15,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+package com.example.icare.icare;
+import android.content.Context;
+import android.widget.Toast;
 
-buildscript {
-    
-    repositories {
-        google()
-        jcenter()
+/**
+ * Created by Alex Frederico Ramos Barboza on 01/12/17.
+ */
+
+public final class PersonalToast {
+    private static PersonalToast instanceOf = null;
+
+    private PersonalToast() {}
+
+    public static void toastMessage(Context context, String message) {
+
+        Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+        toast.show();
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
-        classpath 'com.google.gms:google-services:3.1.0'
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
-
-        maven {
-            url "https://maven.google.com"
-        }
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
