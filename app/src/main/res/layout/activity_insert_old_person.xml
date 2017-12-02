@@ -32,13 +32,19 @@
             android:id="@+id/txtOldName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/acitivity_insert_old_str1"/>
+            android:text="@string/activity_insert_old_name"/>
 
         <EditText
             android:id="@+id/txtOldBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/acitivity_insert_old_str2" />
+            android:text="@string/activity_insert_old_birth" />
+
+        <EditText
+            android:id="@+id/txtOldPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insitra o número de telefone"/>
 
     </LinearLayout>
 

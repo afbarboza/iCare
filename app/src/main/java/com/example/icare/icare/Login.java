@@ -40,8 +40,8 @@ public class Login extends AppCompatActivity {
         boolean checked = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
-        String str1 = getString(R.string.activity_login_str4);
-        String str2 = getString(R.string.activity_login_str5);
+        String str1 = getString(R.string.activity_login_gmail);
+        String str2 = getString(R.string.activity_login_wait);
 
         switch(view.getId()) {
             case R.id.radio_caregiver:

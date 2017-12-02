@@ -22,10 +22,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -48,8 +45,8 @@ public class GoogleAuthentication extends AppCompatActivity {
      * warnWrongEmail - alerts user that the inserted email and/or password is not correct
      */
     private void warnWrongEmail() {
-        new AlertDialog.Builder(this).setTitle(R.string.acitivity_googleauthentication_str4).
-                setMessage(getString(R.string.acitivity_googleauthentication_str2)).show();
+        new AlertDialog.Builder(this).setTitle(R.string.activity_googleauthentication_error).
+                setMessage(getString(R.string.activity_googleauthentication_invalid)).show();
     }
 
     /**
@@ -62,7 +59,7 @@ public class GoogleAuthentication extends AppCompatActivity {
         if (account == null) {
             warnWrongEmail();
         } else {
-            PersonalToast.toastMessage(this, getString(R.string.acitivity_googleauthentication_str3));
+            PersonalToast.toastMessage(this, getString(R.string.activity_googleauthentication_success));
             Intent i = new Intent(this, CaregiverDashboard.class);
             startActivity(i);
         }

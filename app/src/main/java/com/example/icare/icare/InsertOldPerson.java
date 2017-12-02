@@ -74,13 +74,18 @@ public class InsertOldPerson extends AppCompatActivity {
         txtOldBirth.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                txtOldBirth.setText("");
-                handleTxtBirthClick();
+                if (b) {
+                    txtOldBirth.setText("");
+                    handleTxtBirthClick();
+                }
             }
         });
 
     }
 
+    /**
+     * notifyDateChanged - notifies GUI that the birth date has been updated.
+     */
     public static void notifyDateChanged() {
         int day = BirthDate.getDay();
         int month = BirthDate.getMonth();

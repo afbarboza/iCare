@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_login_str1"
+            android:text="@string/activity_login_question"
             />
 
         <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
@@ -24,13 +24,13 @@
             <RadioButton android:id="@+id/radio_caregiver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/activity_login_str3"
+                android:text="@string/activity_login_caregiver"
                 android:onClick="onRadioButtonClicked"/>
 
             <RadioButton android:id="@+id/radio_oldperson"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/activity_login_str2"
+                android:text="@string/activity_login_old"
                 android:onClick="onRadioButtonClicked"/>
 
 
