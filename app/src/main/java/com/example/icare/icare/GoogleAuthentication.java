@@ -37,32 +37,17 @@ import com.google.android.gms.tasks.Task;
 public class GoogleAuthentication extends AppCompatActivity {
 
     SignInButton btnLogin;
-    EditText txtEmail;
 
     /* A client for interacting with the Google Sign In API. */
     private GoogleSignInClient mGoogleSignInClient;
     private static  final int RC_SIGN_IN = 999;
 
     /**
-     * setEmailFocusHandler - defines behavior when EditText receive focus
-     */
-    private void setEmailFocusHandler() {
-        txtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (b) {
-                    txtEmail.setText("");
-                }
-            }
-        });
-    }
-
-    /**
      * warnWrongEmail - alerts user that the inserted email and/or password is not correct
      */
     private void warnWrongEmail() {
-        new AlertDialog.Builder(this).setTitle("Erro").
-                setMessage("Email e/ou senha inválido(s)").show();
+        new AlertDialog.Builder(this).setTitle(R.string.acitivity_googleauthentication_str4).
+                setMessage(getString(R.string.acitivity_googleauthentication_str2)).show();
     }
 
     /**
@@ -75,7 +60,7 @@ public class GoogleAuthentication extends AppCompatActivity {
         if (account == null) {
             warnWrongEmail();
         } else {
-            PersonalToast.toastMessage(this, "Login realizado com sucesso.");
+            PersonalToast.toastMessage(this, getString(R.string.acitivity_googleauthentication_str3));
             Intent i = new Intent(this, CaregiverDashboard.class);
             startActivity(i);
         }
@@ -144,10 +129,8 @@ public class GoogleAuthentication extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_authentication);
 
-        /* initialize graphical elements */
-        txtEmail = (EditText) findViewById(R.id.txt_email);
-        btnLogin = (SignInButton) findViewById(R.id.btn_gmail_login);
-        setEmailFocusHandler();
+        /* initialize graphical elements here */
+
 
         /* Setting up some sign in options */
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

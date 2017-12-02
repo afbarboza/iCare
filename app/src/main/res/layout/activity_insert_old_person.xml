@@ -23,4 +23,24 @@
     android:layout_height="match_parent"
     tools:context="com.example.icare.icare.InsertOldPerson">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/txtOldName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/acitivity_insert_old_str1"/>
+
+        <EditText
+            android:id="@+id/txtOldBirth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/acitivity_insert_old_str2"
+            android:onClick=""/>
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

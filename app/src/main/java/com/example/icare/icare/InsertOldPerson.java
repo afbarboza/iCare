@@ -17,14 +17,42 @@
 
 package com.example.icare.icare;
 
+import android.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 public class InsertOldPerson extends AppCompatActivity {
+
+    EditText txtOldName;
+    EditText txtOldBirth;
+
+
+    /**
+     * handleTxtBirthClick - handles the click on the birth date edit text.
+     * Pop up a date picker, so user can select the OldPerson birth date.
+     *
+     * @param v basic graphic building block.
+     */
+    public void handleTxtBirthClick(View v) {
+        /* basic sanity check */
+        String tmp = txtOldBirth.getText().toString();
+        if (tmp.compareTo(getString(R.string.acitivity_insert_old_str2)) == 0) {
+            txtOldBirth.setText("");
+        }
+
+        /* popup a date picker */
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "datePicker");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_old_person);
+
+        txtOldName = (EditText) findViewById(R.id.txtOldName);
+        txtOldBirth = (EditText) findViewById(R.id.txtOldBirth);
     }
 }

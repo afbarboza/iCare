@@ -18,6 +18,7 @@
 package com.example.icare.icare;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,12 +26,13 @@ import android.view.View;
 public class CaregiverDashboard extends AppCompatActivity {
 
     /**
-     * Handles the Add Old Person button click event
+     * Handles the Add Old Person button click event, redirecting to the Insert Old Person view.
      *
      * @param v: basic building block for user interface components
      */
     public void handleAddOldPerson(View v) {
-        PersonalToast.toastMessage(this, "Você clicou no botao de add");
+        Intent i = new Intent(this, InsertOldPerson.class);
+        startActivity(i);
     }
 
     @Override

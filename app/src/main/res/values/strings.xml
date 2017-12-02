@@ -11,8 +11,17 @@
     <string name="activity_login_str1">Você é idoso ou cuidador?</string>
     <string name="activity_login_str2">Idoso</string>
     <string name="activity_login_str3">Cuidador</string>
+    <string name="activity_login_str4">Entre com sua conta do GMail</string>
+    <string name="activity_login_str5">Aguarde um segundo...</string>
 
     <!-- Acitivity GoogleAuthentication Strings -->
     <string name="acitivity_googleauthentication_str1">Insira sua conta GMail:</string>
+    <string name="acitivity_googleauthentication_str2">Email e/ou senha inválido(s)</string>
+    <string name="acitivity_googleauthentication_str3">Login realizado com sucesso</string>
+    <string name="acitivity_googleauthentication_str4">Erro: </string>
+
+    <!-- Activity Insert Old Person Strings -->
+    <string name="acitivity_insert_old_str1">Insira o nome do idoso</string>
+    <string name="acitivity_insert_old_str2">Insira a data de nascimento</string>
 
 </resources>

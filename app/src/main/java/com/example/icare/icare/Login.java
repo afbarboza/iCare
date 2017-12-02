@@ -40,15 +40,18 @@ public class Login extends AppCompatActivity {
         boolean checked = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
+        String str1 = getString(R.string.activity_login_str4);
+        String str2 = getString(R.string.activity_login_str5);
+
         switch(view.getId()) {
             case R.id.radio_caregiver:
                 if (checked)
-                    PersonalToast.toastMessage(getApplicationContext(), "Entre com sua conta do GMail");
+                    PersonalToast.toastMessage(getApplicationContext(), str1);
                     gotoGoogleAuthentication();
                     break;
             case R.id.radio_oldperson:
                 if (checked)
-                    PersonalToast.toastMessage(getApplicationContext(), "Aguarde um segundo");
+                    PersonalToast.toastMessage(getApplicationContext(), str2);
                     break;
         }
     }
