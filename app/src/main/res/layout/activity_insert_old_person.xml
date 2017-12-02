@@ -38,8 +38,7 @@
             android:id="@+id/txtOldBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/acitivity_insert_old_str2"
-            android:onClick=""/>
+            android:text="@string/acitivity_insert_old_str2" />
 
     </LinearLayout>
 

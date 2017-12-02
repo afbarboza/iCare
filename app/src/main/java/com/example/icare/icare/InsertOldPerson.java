@@ -28,20 +28,13 @@ public class InsertOldPerson extends AppCompatActivity {
     EditText txtOldName;
     EditText txtOldBirth;
 
-
     /**
      * handleTxtBirthClick - handles the click on the birth date edit text.
      * Pop up a date picker, so user can select the OldPerson birth date.
      *
      * @param v basic graphic building block.
      */
-    public void handleTxtBirthClick(View v) {
-        /* basic sanity check */
-        String tmp = txtOldBirth.getText().toString();
-        if (tmp.compareTo(getString(R.string.acitivity_insert_old_str2)) == 0) {
-            txtOldBirth.setText("");
-        }
-
+    public void handleTxtBirthClick() {
         /* popup a date picker */
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
@@ -52,7 +45,33 @@ public class InsertOldPerson extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_old_person);
 
+        /* initialize graphic components here */
         txtOldName = (EditText) findViewById(R.id.txtOldName);
         txtOldBirth = (EditText) findViewById(R.id.txtOldBirth);
+
+        /* defines behavior of graphical components */
+        txtOldName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtOldName.setText("");
+            }
+        });
+
+        txtOldBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                txtOldBirth.setText("");
+                handleTxtBirthClick();
+            }
+        });
+
+        txtOldBirth.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                txtOldBirth.setText("");
+                handleTxtBirthClick();
+            }
+        });
+
     }
 }
