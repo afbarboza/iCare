@@ -14,5 +14,13 @@
 
     <!-- Acitivity GoogleAuthentication Strings -->
     <string name="acitivity_googleauthentication_str1">Insira sua conta GMail:</string>
+    
+    <!-- ActivityCaregiverDashboard Strings -->
+    <string name="old_age">Idade: </string>
+
+    <!-- Activity drougs -->
+    <string name="drougs_dosage">Dosagem: </string>
+    <string name="drougs_period">Horário: </string>
+    <string name="drougs_observations">Observações: </string>
 
 </resources>
