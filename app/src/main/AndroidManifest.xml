@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GoogleAuthentication"></activity>
+        <activity android:name=".GoogleAuthentication" />
+        <activity android:name=".CaregiverDashboard" />
+        <activity android:name=".InsertOldPerson"></activity>
     </application>
 
 </manifest>

@@ -75,8 +75,9 @@ public class GoogleAuthentication extends AppCompatActivity {
         if (account == null) {
             warnWrongEmail();
         } else {
-            // goto Caregiver view
             PersonalToast.toastMessage(this, "Login realizado com sucesso.");
+            Intent i = new Intent(this, CaregiverDashboard.class);
+            startActivity(i);
         }
     }
 
