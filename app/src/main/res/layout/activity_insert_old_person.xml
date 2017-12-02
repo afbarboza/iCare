@@ -46,6 +46,12 @@
             android:layout_height="wrap_content"
             android:text="Insitra o número de telefone"/>
 
+        <ImageView
+            android:id="@+id/foto_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"  />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
