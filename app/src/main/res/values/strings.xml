@@ -27,4 +27,10 @@
     <string name="activity_insert_old_photo">Insira a foto:</string>
     <string name="activity_insert_old_diseases">Lista de Doenças:</string>
 
+    <!-- Activity drougs -->
+    <string name="drougs_dosage">Dosagem: </string>
+    <string name="drougs_period">Horário: </string>
+    <string name="drougs_observations">Observações: </string>
+
+
 </resources>
