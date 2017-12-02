@@ -26,6 +26,7 @@
     <string name="activity_insert_old_phone">Insira o telefone</string>
     <string name="activity_insert_old_photo">Insira a foto:</string>
     <string name="activity_insert_old_diseases">Lista de Doenças:</string>
+    <string name="activity_insert_old_save">Salvar cadastro</string>
 
     <!-- Activity drougs -->
     <string name="drougs_dosage">Dosagem: </string>
