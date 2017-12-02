@@ -26,7 +26,7 @@ import android.widget.EditText;
 public class InsertOldPerson extends AppCompatActivity {
 
     EditText txtOldName;
-    EditText txtOldBirth;
+    static EditText txtOldBirth;
 
     /**
      * handleTxtBirthClick - handles the click on the birth date edit text.
@@ -38,6 +38,12 @@ public class InsertOldPerson extends AppCompatActivity {
         /* popup a date picker */
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getFragmentManager(), "datePicker");
+
+
+    }
+
+    public EditText getTxtOldBirth() {
+        return this.txtOldBirth;
     }
 
     @Override
@@ -73,5 +79,13 @@ public class InsertOldPerson extends AppCompatActivity {
             }
         });
 
+    }
+
+    public static void notifyDateChanged() {
+        int day = BirthDate.getDay();
+        int month = BirthDate.getMonth();
+        int year = BirthDate.getYear();
+
+        txtOldBirth.setText(day + "/" + month + "/" + year);
     }
 }

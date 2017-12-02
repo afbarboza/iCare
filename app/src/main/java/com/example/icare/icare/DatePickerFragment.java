@@ -27,6 +27,7 @@ import java.util.Calendar;
 
 /**
  * Created by alex on 01/12/17.
+ *
  */
 
 public class DatePickerFragment
@@ -46,7 +47,7 @@ public class DatePickerFragment
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-
+        BirthDate.setInstance(day, month, year);
+        InsertOldPerson.notifyDateChanged();
     }
-
 }
