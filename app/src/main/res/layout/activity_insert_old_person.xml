@@ -28,29 +28,70 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/foto_usuario"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_get_picture"
+                android:layout_margin="20dp"
+                android:layout_centerHorizontal="true"
+                android:background="@android:color/white"/>
+
+        </RelativeLayout>
+
         <EditText
             android:id="@+id/txtOldName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/activity_insert_old_name"/>
+            android:text="@string/activity_insert_old_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
 
         <EditText
             android:id="@+id/txtOldBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:text="@string/activity_insert_old_birth" />
 
         <EditText
             android:id="@+id/txtOldPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Insitra o número de telefone"/>
-
-        <ImageView
-            android:id="@+id/foto_usuario"
-            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/activity_insert_old_phone"/>
+        <EditText
+            android:id="@+id/txtOldDiseases"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"  />
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/activity_insert_old_diseases"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/save_old_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="salvar"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="@android:color/holo_green_dark"
+                android:paddingHorizontal="100dp"
+                android:textColor="@android:color/white"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+
 
     </LinearLayout>
 

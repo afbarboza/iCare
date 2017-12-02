@@ -21,18 +21,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.icare.icare.GoogleAuthentication">
+    tools:context="com.example.icare.icare.CaregiverDashboard">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        >
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/btn_gmail_login"
+        <ListView
+            android:id="@+id/lv_drougs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_add_drougs"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|right"
+            android:src="@drawable/ic_action_add"
+            android:onClick="handleAddOldPerson"
+            android:layout_margin="16dp" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
