@@ -72,8 +72,9 @@
 
                     <ImageButton
                         android:id="@+id/drougs_remove"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_margin="5dp"
                         android:background="@drawable/ic_action_name"
                         android:layout_alignParentRight="true"/>
 

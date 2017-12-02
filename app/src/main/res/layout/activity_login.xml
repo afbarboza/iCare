@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context="com.example.icare.icare.Login">
 
     <LinearLayout
@@ -11,32 +12,59 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="40dp"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/activity_login_question"
-            />
+            android:textAlignment="center"
+            android:text="@string/activity_login_question" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <RadioButton android:id="@+id/radio_caregiver"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_login_caregiver"
-                android:onClick="onRadioButtonClicked"/>
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/radio_caregiver"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:onClick="onRadioButtonClickedCaregiver"
+                android:src="@drawable/cuidador" />
 
-            <RadioButton android:id="@+id/radio_oldperson"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_login_old"
-                android:onClick="onRadioButtonClicked"/>
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/radio_oldperson"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:onClick="onRadioButtonClickedOld"
+                android:src="@drawable/idoso" />
+        </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_login_caregiver"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_login_old"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"
+                    />
 
-        </RadioGroup>
+            </LinearLayout>
 
-    </LinearLayout>
+        </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

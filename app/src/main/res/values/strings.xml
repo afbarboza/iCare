@@ -8,7 +8,7 @@
 
 
     <!-- Activity Login Strings -->
-    <string name="activity_login_question">Você é idoso ou cuidador?</string>
+    <string name="activity_login_question">Você é um cuidador ou idoso?</string>
     <string name="activity_login_old">Idoso</string>
     <string name="activity_login_caregiver">Cuidador</string>
     <string name="activity_login_gmail">Entre com sua conta do GMail</string>

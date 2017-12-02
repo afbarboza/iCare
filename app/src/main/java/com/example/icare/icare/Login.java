@@ -18,10 +18,9 @@
 package com.example.icare.icare;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.*;
 
 
 public class Login extends AppCompatActivity {
@@ -35,25 +34,15 @@ public class Login extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
+    public void onRadioButtonClickedCaregiver(View view) {
+        gotoGoogleAuthentication();
+    }
 
+    public void onRadioButtonClickedOld(View view) {
         // Check which radio button was clicked
-        String str1 = getString(R.string.activity_login_gmail);
         String str2 = getString(R.string.activity_login_wait);
 
-        switch(view.getId()) {
-            case R.id.radio_caregiver:
-                if (checked)
-                    PersonalToast.toastMessage(getApplicationContext(), str1);
-                    gotoGoogleAuthentication();
-                    break;
-            case R.id.radio_oldperson:
-                if (checked)
-                    PersonalToast.toastMessage(getApplicationContext(), str2);
-                    break;
-        }
+        PersonalToast.toastMessage(getApplicationContext(), str2);
     }
 
     @Override
