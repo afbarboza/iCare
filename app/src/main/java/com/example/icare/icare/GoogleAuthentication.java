@@ -22,7 +22,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -69,7 +71,7 @@ public class GoogleAuthentication extends AppCompatActivity {
     /**
      * signIn - log into the  user GMail account.
      */
-    protected void signIn() {
+    public void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -129,8 +131,10 @@ public class GoogleAuthentication extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_authentication);
 
-        /* initialize graphical elements here */
 
+
+        /* initialize graphical elements here */
+        btnLogin = (SignInButton) findViewById(R.id.btn_gmail_login);
 
         /* Setting up some sign in options */
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
