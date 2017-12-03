@@ -32,7 +32,7 @@
     <!-- Activity Drougs Strings -->
     <string name="drougs_name">Remédio: </string>
     <string name="drougs_dosage">Dosagem: </string>
-    <string name="drougs_period">Horário: </string>
+    <string name="drougs_period">__ horas</string>
     <string name="drougs_observations">Observações: </string>
 
 
