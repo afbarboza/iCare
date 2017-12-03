@@ -17,36 +17,14 @@
 
 package com.example.icare.icare;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.os.Bundle;
 
-
-public class Login extends AppCompatActivity {
-
-    /**
-     * gotoGoogleAuthentication - transfers control to the
-     *  GoogleAuthentication acitivity
-     */
-    private void gotoGoogleAuthentication() {
-        //Intent i = new Intent(Login.this, GoogleAuthentication.class);
-        Intent i = new Intent(Login.this, CaregiverDashboard.class);
-        startActivity(i);
-    }
-
-    public void onRadioButtonClickedCaregiver(View view) {
-        gotoGoogleAuthentication();
-    }
-
-    public void onRadioButtonClickedOld(View view) {
-        Intent it = new Intent(Login.this, OldPersonDashboard.class );
-        startActivity(it);
-    }
+public class OldPersonDashboard extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_old_person_dashboard);
     }
 }

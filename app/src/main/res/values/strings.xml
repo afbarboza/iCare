@@ -8,7 +8,7 @@
 
 
     <!-- Activity Login Strings -->
-    <string name="activity_login_question">Você é idoso ou cuidador?</string>
+    <string name="activity_login_question">Você é um cuidador ou idoso?</string>
     <string name="activity_login_old">Idoso</string>
     <string name="activity_login_caregiver">Cuidador</string>
     <string name="activity_login_gmail">Entre com sua conta do GMail</string>
@@ -21,14 +21,16 @@
     <string name="activity_googleauthentication_error">Erro: </string>
 
     <!-- Activity Insert Old Person Strings -->
-    <string name="activity_insert_old_name">Nome do idoso: </string>
-    <string name="activity_insert_old_birth">Data de nascimento: </string>
+    <string name="activity_insert_old_code">Código: </string>
+    <string name="activity_insert_old_name">Nome: </string>
+    <string name="activity_insert_old_birth">Nascimento: </string>
     <string name="activity_insert_old_phone">(__) _ ____-____</string>
     <string name="activity_insert_old_photo">Insira a foto:</string>
     <string name="activity_insert_old_diseases">Doenças:</string>
     <string name="activity_insert_old_save">Salvar cadastro</string>
 
-    <!-- Activity drougs -->
+    <!-- Activity Drougs Strings -->
+    <string name="drougs_name">Remédio: </string>
     <string name="drougs_dosage">Dosagem: </string>
     <string name="drougs_period">Horário: </string>
     <string name="drougs_observations">Observações: </string>

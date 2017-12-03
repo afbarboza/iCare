@@ -21,18 +21,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.icare.icare.GoogleAuthentication">
+    tools:context="com.example.icare.icare.GoogleAuthentication"
+    android:background="@android:color/white">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_margin="30dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logocuidador"/>
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/btn_gmail_login"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="50dp"
+            android:layout_alignTop="@+id/tv_login"
+            android:layout_centerHorizontal="true"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fazer login com o Google"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

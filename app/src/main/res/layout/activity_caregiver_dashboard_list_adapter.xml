@@ -54,8 +54,9 @@
 
                     <ImageButton
                         android:id="@+id/old_remove"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_margin="5dp"
                         android:background="@drawable/ic_action_name"
                         android:layout_alignParentRight="true"/>
 
@@ -78,6 +79,25 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text= "@string/activity_insert_old_code"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                    <TextView
+                        android:id="@+id/old_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorAccent"/>
                 </LinearLayout>
 
             </LinearLayout>

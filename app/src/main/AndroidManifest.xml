@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.icare.icare">
 
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-feature android:name="android.hardware.camera2" android:required="true"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.STORAGE" />
@@ -24,7 +28,8 @@
         </activity>
         <activity android:name=".GoogleAuthentication" />
         <activity android:name=".CaregiverDashboard" />
-        <activity android:name=".InsertOldPerson"></activity>
-
+        <activity android:name=".InsertOldPerson" />
+        <activity android:name=".OldPersonDashboard"></activity>
     </application>
+
 </manifest>
