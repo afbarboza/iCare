@@ -18,15 +18,22 @@
 package com.example.icare.icare;
 
 import android.app.DialogFragment;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class InsertOldPerson extends AppCompatActivity {
 
     EditText txtOldName;
     static EditText txtOldBirth;
+    ImageView imgOldPhoto;
+
+    static final int CAMERA_PIC_REQUEST = 1;
 
     /**
      * handleTxtBirthClick - handles the click on the birth date edit text.
@@ -42,8 +49,30 @@ public class InsertOldPerson extends AppCompatActivity {
 
     }
 
-    public EditText getTxtOldBirth() {
-        return this.txtOldBirth;
+    /**
+     * dispatchTakePictureIntent - takes a photo from user.
+     */
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, CAMERA_PIC_REQUEST);
+        }
+    }
+
+    /**
+     * onActivityResult - gets a result from an activity. (callback function)
+     * @param requestCode: The request code you passed to startActivityForResult().
+     * @param resultCode: A result code specified by the second activity.
+     * @param data: An Intent that carries the result data.
+     */
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case CAMERA_PIC_REQUEST:
+                if (resultCode == RESULT_OK) {
+                    Bitmap thumbail = (Bitmap) data.getExtras().get("data");
+                    imgOldPhoto.setImageBitmap(thumbail);
+                }
+        }
     }
 
     @Override
@@ -54,6 +83,7 @@ public class InsertOldPerson extends AppCompatActivity {
         /* initialize graphic components here */
         txtOldName = (EditText) findViewById(R.id.txtOldName);
         txtOldBirth = (EditText) findViewById(R.id.txtOldBirth);
+        imgOldPhoto = (ImageView) findViewById(R.id.imgOldPhoto);
 
         /* defines behavior of graphical components */
         txtOldName.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +111,13 @@ public class InsertOldPerson extends AppCompatActivity {
             }
         });
 
+
+        imgOldPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dispatchTakePictureIntent();
+            }
+        });
     }
 
     /**

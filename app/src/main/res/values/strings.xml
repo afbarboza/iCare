@@ -23,9 +23,10 @@
     <!-- Activity Insert Old Person Strings -->
     <string name="activity_insert_old_name">Nome do idoso: </string>
     <string name="activity_insert_old_birth">Data de nascimento: </string>
-    <string name="activity_insert_old_phone">Telefone: </string>
+    <string name="activity_insert_old_phone">(__) _ ____-____</string>
     <string name="activity_insert_old_photo">Insira a foto:</string>
-    <string name="activity_insert_old_diseases">Doenças: </string>
+    <string name="activity_insert_old_diseases">Doenças:</string>
+    <string name="activity_insert_old_save">Salvar cadastro</string>
 
     <!-- Activity drougs -->
     <string name="drougs_dosage">Dosagem: </string>

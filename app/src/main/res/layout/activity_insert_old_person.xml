@@ -18,6 +18,7 @@
 
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mask="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,13 +34,13 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/foto_usuario"
+                android:id="@+id/imgOldPhoto"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:src="@drawable/ic_get_picture"
                 android:layout_margin="10dp"
                 android:layout_centerHorizontal="true"
-                android:background="@android:color/white"/>
+                android:background="@android:color/white" />
 
         </RelativeLayout>
 
@@ -59,14 +60,20 @@
             android:layout_marginRight="10dp"
             android:text="@string/activity_insert_old_birth" />
 
-        <EditText
+        <br.com.sapereaude.maskedEditText.MaskedEditText
             android:id="@+id/txtOldPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/activity_insert_old_phone"/>
+            android:text="@string/activity_insert_old_phone"
+            android:inputType="phone"
+            android:typeface="monospace"
+            mask:allowed_chars="1234567890"
+            mask:mask="(##)9####-####"
+            android:hint="1234567890"
+            app:keep_hint="true" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -85,7 +92,6 @@
                 android:layout_centerHorizontal="true"/>
 
         </RelativeLayout>
-
 
     </LinearLayout>
 
