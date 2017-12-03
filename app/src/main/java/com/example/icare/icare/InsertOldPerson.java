@@ -39,7 +39,6 @@ public class InsertOldPerson extends AppCompatActivity {
      * handleTxtBirthClick - handles the click on the birth date edit text.
      * Pop up a date picker, so user can select the OldPerson birth date.
      *
-     * @param v basic graphic building block.
      */
     public void handleTxtBirthClick() {
         /* popup a date picker */

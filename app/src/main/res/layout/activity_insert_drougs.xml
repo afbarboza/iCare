@@ -34,7 +34,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imgOldPhoto"
+                android:id="@+id/imgDrougPhoto"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:src="@drawable/ic_get_picture"
@@ -49,31 +49,35 @@
             android:id="@+id/txtOldName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/activity_insert_old_name"
+            android:hint="@string/drougs_name"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"/>
 
         <EditText
-            android:id="@+id/txtOldBirth"
+            android:id="@+id/txtNameInsertDroug"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:hint="@string/activity_insert_old_birth" />
+            android:hint="@string/drougs_dosage" />
 
-        <br.com.sapereaude.maskedEditText.MaskedEditText
-            android:id="@+id/txtOldPhoneNumber"
+        <EditText
+            android:id="@+id/txtTimeInsertDroug"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="time"
+            android:hint="@string/drougs_period"/>
+
+        <EditText
+            android:id="@+id/txtObservationsInsertDroug"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:inputType="phone"
-            android:typeface="monospace"
-            mask:allowed_chars="1234567890"
-            mask:mask="(##)9####-####"
-            android:hint="1111111111"
-            app:keep_hint="true" />
+            android:hint="@string/drougs_observations"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
