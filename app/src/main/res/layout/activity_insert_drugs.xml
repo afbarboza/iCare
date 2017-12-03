@@ -35,8 +35,8 @@
 
             <ImageView
                 android:id="@+id/imgDrugPhoto"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/ic_get_picture"
                 android:layout_margin="10dp"
                 android:layout_centerHorizontal="true"
@@ -46,61 +46,78 @@
         </RelativeLayout>
 
         <EditText
-            android:id="@+id/txtOldName"
+            android:id="@+id/txtDrugName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/drougs_name"
+            android:hint="@string/drugs_name"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:maxLines="1"
+            android:inputType="text"/>
 
         <EditText
-            android:id="@+id/txtNameInsertDroug"
+            android:id="@+id/txtDrugDosage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:hint="@string/drougs_dosage" />
+            android:hint="@string/drugs_dosage"
+            android:maxLines="1"
+            android:inputType="text"/>
 
         <br.com.sapereaude.maskedEditText.MaskedEditText
-            android:id="@+id/txtOldPhoneNumber"
+            android:id="@+id/txtDrugFrequency"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:inputType="phone"
             android:typeface="monospace"
             mask:allowed_chars="1234567890"
             mask:mask="##horas"
             android:hint="03horas"
-            app:keep_hint="true" />
+            app:keep_hint="true"
+            android:maxLines="1"
+            android:inputType="text"/>
 
         <EditText
-            android:id="@+id/txtObservationsInsertDroug"
+            android:id="@+id/txtDrugObservations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:hint="@string/drougs_observations"/>
+            android:hint="@string/drugs_observations"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/save_old_register"
+                android:id="@+id/save_drug_reminder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="salvar"
+                android:text="@string/drugs_record_voice"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="@android:color/holo_green_dark"
                 android:paddingHorizontal="100dp"
                 android:textColor="@android:color/white"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true" />
 
         </RelativeLayout>
+
+        <Button
+            android:id="@+id/save_new_drug"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:paddingHorizontal="100dp"
+            android:text="salvar"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 

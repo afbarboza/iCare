@@ -30,10 +30,13 @@
     <string name="activity_insert_old_save">Salvar cadastro</string>
 
     <!-- Activity Drougs Strings -->
-    <string name="drougs_name">Remédio: </string>
-    <string name="drougs_dosage">Dosagem: </string>
-    <string name="drougs_period">__ horas</string>
-    <string name="drougs_observations">Observações: </string>
-
+    <string name="drugs_name">Remédio: </string>
+    <string name="drugs_dosage">Dosagem: </string>
+    <string name="drugs_period">__ horas</string>
+    <string name="drugs_observations">Observações: </string>
+    <string name="drugs_record_voice">Gravar aviso sonoro</string>
+    <string name="drugs_stop_record">Parar gravação</string>
+    <string name="drugs_recording">Gravando aúdio</string>
+    <string name="drugs_recorded">Aúdio gravado com sucesso!</string>
 
 </resources>
