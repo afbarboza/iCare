@@ -71,9 +71,8 @@
             android:inputType="phone"
             android:typeface="monospace"
             mask:allowed_chars="1234567890"
-            mask:mask="##horas"
-            android:hint="03horas"
-            app:keep_hint="true" />
+            mask:mask="##h"
+            android:hint="03h"/>
 
         <EditText
             android:id="@+id/txtObservationsInsertDroug"

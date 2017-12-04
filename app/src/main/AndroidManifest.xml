@@ -11,9 +11,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
     <application
         android:allowBackup="true"
@@ -32,7 +32,8 @@
         <activity android:name=".GoogleAuthentication" />
         <activity android:name=".CaregiverDashboard" />
         <activity android:name=".InsertOldPerson" />
-        <activity android:name=".OldPersonDashboard"></activity>
+        <activity android:name=".OldPersonDashboard" />
+        <activity android:name=".CaregiverDashboardDrougs"></activity>
     </application>
 
 </manifest>

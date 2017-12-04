@@ -18,19 +18,18 @@
 package com.example.icare.icare;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
- * Created by Giovanni on 03/12/2017.
+ * Created by Giovanni on 04/12/2017.
  */
 
-class OldPerson implements Serializable {
+class Droug implements Serializable{
     String name;
-    String dateBirth;
-    String phone;
-    List<Droug> drougs;
+    String dosage;
+    String Period;
+    String Observations;
 
-    public OldPerson() {
+    public Droug() {
     }
 
     public String getName() {
@@ -41,32 +40,29 @@ class OldPerson implements Serializable {
         this.name = name;
     }
 
-    public String getDateBirth() {
-        return dateBirth;
+    public String getDosage() {
+        return dosage;
     }
 
-    public void setDateBirth(String dateBirth) {
-        this.dateBirth = dateBirth;
+    public void setDosage(String dosage) {
+        this.dosage = dosage;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPeriod() {
+        return Period;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPeriod(String period) {
+        Period = period;
     }
 
-    public List<Droug> getDrougs() {
-        return drougs;
+    public String getObservations() {
+        return Observations;
     }
 
-    public void setDrougs(List<Droug> drougs) {
-        this.drougs = drougs;
-    }
-
-    @Override
-    public String toString() {
-        return name;
+    public void setObservations(String observations) {
+        Observations = observations;
     }
 }
+
+

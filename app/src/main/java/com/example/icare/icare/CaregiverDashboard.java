@@ -20,11 +20,11 @@ package com.example.icare.icare;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.firebase.FirebaseApp;
@@ -34,6 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,9 +42,7 @@ public class CaregiverDashboard extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference ref;
     private static boolean calledAlready = false;
-
-    private List<OldPerson> listOfOlds = new ArrayList<OldPerson>();
-    private ArrayAdapter<OldPerson> arrayAdapterOldPerson;
+    private FloatingActionButton btn_add_person;
     /**
      * Handles the Add Old Person button click event, redirecting to the Insert Old Person view.
      *
@@ -58,6 +57,7 @@ public class CaregiverDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caregiver_dashboard);
+        btn_add_person = findViewById(R.id.btn_add_old_person);
 
         FirebaseApp.initializeApp(CaregiverDashboard.this);
         if (!calledAlready){
@@ -73,28 +73,18 @@ public class CaregiverDashboard extends AppCompatActivity {
             ref.child("olds").child(oldPerson.getPhone()).setValue(oldPerson);
         }
 
-        final ListView lv_OldPerson = (ListView) findViewById(R.id.lv_olds);
-
-        lv_OldPerson.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
-        });
-
         ref.child("olds").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                List<OldPerson> listOfOlds = new ArrayList<OldPerson>();
                 listOfOlds.clear();
                 for(DataSnapshot objectSnapshot: dataSnapshot.getChildren()){
                     OldPerson oldPersonReceived = objectSnapshot.getValue(OldPerson.class);
                     listOfOlds.add(oldPersonReceived);
                     Log.e("testeGiovanni", oldPersonReceived.getName());
                 }
-                ListOldsAdapter listOldsAdapter = new ListOldsAdapter(CaregiverDashboard.this, listOfOlds);
-                lv_OldPerson.setAdapter(listOldsAdapter);
 
+                createListView(listOfOlds);
             }
 
             @Override
@@ -102,5 +92,23 @@ public class CaregiverDashboard extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    public void createListView(List<OldPerson> oldPersonList){
+        ListView lv_OldPerson = (ListView) findViewById(R.id.lv_olds);
+        final ListOldsAdapter listOldsAdapter = new ListOldsAdapter(CaregiverDashboard.this, oldPersonList);
+        lv_OldPerson.setAdapter(listOldsAdapter);
+
+        lv_OldPerson.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.e("testeGiovanniclick", listOldsAdapter.getItem(i).toString());
+                Intent intent = new Intent(CaregiverDashboard.this, CaregiverDashboardDrougs.class);
+                intent.putExtra("selectedOld", (Serializable) listOldsAdapter.getItem(i));
+                startActivity(intent);
+            }
+        });
+
     }
 }
