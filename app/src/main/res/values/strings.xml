@@ -21,7 +21,7 @@
     <string name="activity_googleauthentication_error">Erro: </string>
 
     <!-- Activity Insert Old Person Strings -->
-    <string name="activity_insert_old_code">Código: </string>
+    <string name="activity_insert_old_phone_number">Telefone: </string>
     <string name="activity_insert_old_name">Nome: </string>
     <string name="activity_insert_old_birth">Nascimento: </string>
     <string name="activity_insert_old_phone">(__) _ ____-____</string>

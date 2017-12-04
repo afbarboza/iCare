@@ -20,18 +20,24 @@ package com.example.icare.icare;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import java.io.Serializable;
 
 public class InsertOldPerson extends AppCompatActivity {
 
     EditText txtOldName;
     static EditText txtOldBirth;
     ImageView imgOldPhoto;
+    EditText txtOldPhone;
+    Button saveOldRegister;
+
 
     static final int CAMERA_PIC_REQUEST = 1;
 
@@ -79,23 +85,18 @@ public class InsertOldPerson extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_old_person);
 
+
         /* initialize graphic components here */
         txtOldName = (EditText) findViewById(R.id.txtOldName);
         txtOldBirth = (EditText) findViewById(R.id.txtOldBirth);
+        txtOldPhone = (EditText) findViewById(R.id.txtOldPhoneNumber);
         imgOldPhoto = (ImageView) findViewById(R.id.imgOldPhoto);
+        saveOldRegister = (Button) findViewById(R.id.save_old_register);
 
-        /* defines behavior of graphical components */
-        txtOldName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                txtOldName.setText("");
-            }
-        });
 
         txtOldBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                txtOldBirth.setText("");
                 handleTxtBirthClick();
             }
         });
@@ -104,7 +105,6 @@ public class InsertOldPerson extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (b) {
-                    txtOldBirth.setText("");
                     handleTxtBirthClick();
                 }
             }
@@ -117,6 +117,25 @@ public class InsertOldPerson extends AppCompatActivity {
                 dispatchTakePictureIntent();
             }
         });
+
+        saveOldRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String oldName = txtOldName.getText().toString();
+                String oldBirth = txtOldBirth.getText().toString();
+                String oldPhone = txtOldPhone.getText().toString();
+
+                OldPerson oldPerson = new OldPerson();
+                oldPerson.setName(oldName);
+                oldPerson.setDateBirth(oldBirth);
+                oldPerson.setPhone(oldPhone);
+
+                Intent it = new Intent(InsertOldPerson.this, CaregiverDashboard.class);
+                it.putExtra("oldPerson", (Serializable) oldPerson);
+                startActivity(it);
+            }
+        });
+
     }
 
     /**

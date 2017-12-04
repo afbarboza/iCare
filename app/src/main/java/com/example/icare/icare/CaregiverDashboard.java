@@ -19,12 +19,31 @@ package com.example.icare.icare;
 
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CaregiverDashboard extends AppCompatActivity {
+    private FirebaseDatabase database;
+    private DatabaseReference ref;
+    private static boolean calledAlready = false;
 
+    private List<OldPerson> listOfOlds = new ArrayList<OldPerson>();
+    private ArrayAdapter<OldPerson> arrayAdapterOldPerson;
     /**
      * Handles the Add Old Person button click event, redirecting to the Insert Old Person view.
      *
@@ -39,5 +58,49 @@ public class CaregiverDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caregiver_dashboard);
+
+        FirebaseApp.initializeApp(CaregiverDashboard.this);
+        if (!calledAlready){
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            calledAlready = true;
+        }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        ref = database.getReference();
+
+        Intent it = getIntent();
+        final OldPerson oldPerson = (OldPerson) it.getSerializableExtra("oldPerson");
+        if(oldPerson != null) {
+            ref.child("olds").child(oldPerson.getPhone()).setValue(oldPerson);
+        }
+
+        final ListView lv_OldPerson = (ListView) findViewById(R.id.lv_olds);
+
+        lv_OldPerson.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
+
+        ref.child("olds").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                listOfOlds.clear();
+                for(DataSnapshot objectSnapshot: dataSnapshot.getChildren()){
+                    OldPerson oldPersonReceived = objectSnapshot.getValue(OldPerson.class);
+                    listOfOlds.add(oldPersonReceived);
+                    Log.e("testeGiovanni", oldPersonReceived.getName());
+                }
+                ListOldsAdapter listOldsAdapter = new ListOldsAdapter(CaregiverDashboard.this, listOfOlds);
+                lv_OldPerson.setAdapter(listOldsAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
