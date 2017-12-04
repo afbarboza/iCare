@@ -22,13 +22,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.ListView;
 
 public class CaregiverDashboardDrougs extends AppCompatActivity {
-    private List<Droug> listDrougs = new ArrayList<Droug>();
-    //private ListView lv_drougs = (ListView) findViewById(R.id.lv_drougs);
+
 
     public void handleAddDroug(View v) {
         Intent i = new Intent(this, CaregiverDashboard.class);
@@ -40,13 +37,15 @@ public class CaregiverDashboardDrougs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caregiver_dashboard_drougs);
 
+
         Intent intent = getIntent();
         final OldPerson oldPerson = (OldPerson) intent.getSerializableExtra("selectedOld");
 
-        if(intent != null){
-            listDrougs.clear();
-            listDrougs = oldPerson.getDrougs();
+        if(oldPerson.getDrougs() != null){
+            ListView lv_drougs = (ListView) findViewById(R.id.lv_drougs);
+            final ListDrougsAdapter listDrougsAdapter = new ListDrougsAdapter(CaregiverDashboardDrougs.this, oldPerson.getDrougs());
             Log.e("giovannidebug",oldPerson.getName());
+            lv_drougs.setAdapter(listDrougsAdapter);
         }
 
 

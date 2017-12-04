@@ -51,6 +51,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_margin="5dp"
+                android:src="@drawable/droug"
                 android:background="@android:color/white"/>
 
             <LinearLayout
