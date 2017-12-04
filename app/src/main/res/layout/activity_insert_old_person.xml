@@ -51,7 +51,10 @@
             android:layout_height="wrap_content"
             android:hint="@string/activity_insert_old_name"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:maxLines="1"
+            android:inputType="text"
+            />
 
         <EditText
             android:id="@+id/txtOldBirth"
@@ -59,7 +62,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:hint="@string/activity_insert_old_birth" />
+            android:hint="@string/activity_insert_old_birth"
+            android:maxLines="1"
+            android:inputType="text"/>
 
         <br.com.sapereaude.maskedEditText.MaskedEditText
             android:id="@+id/txtOldPhoneNumber"
@@ -73,7 +78,8 @@
             mask:allowed_chars="1234567890"
             mask:mask="(##)9####-####"
             android:hint="1111111111"
-            app:keep_hint="true" />
+            app:keep_hint="true"
+            android:maxLines="1"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
