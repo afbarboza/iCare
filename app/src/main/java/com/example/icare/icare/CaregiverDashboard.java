@@ -60,10 +60,15 @@ public class CaregiverDashboard extends AppCompatActivity {
         btn_add_person = findViewById(R.id.btn_add_old_person);
 
         FirebaseApp.initializeApp(CaregiverDashboard.this);
+        Log.i("alex", "Firebase initialized.");
+
         if (!calledAlready){
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
             calledAlready = true;
         }
+        Log.i("alex", "Local persistence enabled");
+
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ref = database.getReference();
 
