@@ -118,7 +118,6 @@
             android:paddingHorizontal="100dp"
             android:text="salvar"
             android:textColor="@android:color/white" />
-
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
