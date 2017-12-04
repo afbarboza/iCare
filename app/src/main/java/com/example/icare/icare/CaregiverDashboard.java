@@ -60,18 +60,28 @@ public class CaregiverDashboard extends AppCompatActivity {
         btn_add_person = findViewById(R.id.btn_add_old_person);
 
         FirebaseApp.initializeApp(CaregiverDashboard.this);
-        if (!calledAlready){
+
+        if (!calledAlready) {
+            if (FirebaseDatabase.getInstance() == null) {
+                Log.i("alex", "null pointer exception");
+            }
+
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
             calledAlready = true;
         }
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ref = database.getReference();
+
+        Log.i("alex", "chegue aqui 3");
 
         Intent it = getIntent();
         final OldPerson oldPerson = (OldPerson) it.getSerializableExtra("oldPerson");
         if(oldPerson != null) {
             ref.child("olds").child(oldPerson.getPhone()).setValue(oldPerson);
         }
+
+        Log.i("alex", "chegue aqui 4");
 
         ref.child("olds").addValueEventListener(new ValueEventListener() {
             @Override
@@ -92,6 +102,8 @@ public class CaregiverDashboard extends AppCompatActivity {
 
             }
         });
+
+        Log.i("alex", "chegue aqui 5");
 
     }
 
