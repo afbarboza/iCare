@@ -14,6 +14,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
 
     <application
         android:allowBackup="true"
@@ -34,6 +38,7 @@
         <activity android:name=".InsertOldPerson" />
         <activity android:name=".OldPersonDashboard" />
         <activity android:name=".CaregiverDashboardDrougs"></activity>
+        <receiver android:name=".AlarmReceiver" />
     </application>
 
 </manifest>

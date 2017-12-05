@@ -34,6 +34,7 @@
     <string name="drougs_dosage">Dosagem: </string>
     <string name="drougs_period">__ horas</string>
     <string name="drougs_observations">Observações: </string>
+    <string name="drougs_notification">Hora de tomar o remédio</string>
 
     <!--  Activity Old Person Dashboard Strings -->
     <string name="old_dashboard_error">Erro: </string>

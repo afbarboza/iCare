@@ -69,6 +69,10 @@ public class OldPersonDashboard extends AppCompatActivity
                         .build();
             }
         }
+
+        /* sets an test alarm */
+        DrugAlarm d = new DrugAlarm();
+        d.addAlarm(this, 1, 1);
     }
 
     /**
