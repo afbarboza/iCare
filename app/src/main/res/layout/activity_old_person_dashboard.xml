@@ -35,6 +35,25 @@
 
         </ListView>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/btn_tst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="add"
+                android:onClick="addAlarm"/>
+
+            <Button
+                android:id="@+id/btnRecordAudioReminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="microphone"
+                android:onClick="handleAudioRecord"/>
+        </LinearLayout>
+
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

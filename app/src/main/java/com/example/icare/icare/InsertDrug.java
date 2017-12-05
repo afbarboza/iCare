@@ -36,8 +36,6 @@ public class InsertDrug extends AppCompatActivity {
     /* stores the bitmap of drug photo */
     ImageView imgDrugPhoto;
 
-
-
     /**
      * dispatchTakePictureIntent - takes a photo from user.
      */

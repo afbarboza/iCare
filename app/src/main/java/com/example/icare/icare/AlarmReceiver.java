@@ -35,8 +35,11 @@ import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
  */
 
 public class AlarmReceiver  extends BroadcastReceiver {
-    String audioSavedPathInDevice;
 
+    /**
+     * Displays personalized song when it's time to take the medicine
+     * @param appContext: the current app context running
+     */
     private void playAlarm(Context appContext) {
         MediaPlayer mp = MediaPlayer.create(appContext, R.raw.ganhou1);
         for (int i = 0; i < 5; i++) {
@@ -44,11 +47,15 @@ public class AlarmReceiver  extends BroadcastReceiver {
         }
     }
 
+    /**
+     * raiseDrugNotification - adds a notification that its time to take the medicine to
+     *                          upper android sidebar.
+     * @param appContext: the current app context running (not null)
+     */
     private void raiseDrugNotification(Context appContext) {
         /* creates an intent which does nothing */
         final Intent emptyIntent = new Intent();
         PendingIntent pendingIntent = PendingIntent.getActivity(appContext, 1, emptyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
 
         /* build Android user notification */
         NotificationCompat.Builder mBuilder =
@@ -64,6 +71,15 @@ public class AlarmReceiver  extends BroadcastReceiver {
         notificationManager.notify(1, mBuilder.build());
     }
 
+    /**
+     * Warns user (visually and sonorously) that it's time to take the medicines.
+     *
+     * @param context
+     * @param intent
+     *
+     * @see Intent for more information about @intent
+     * @see Context for more information about @context
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         /* power up the device */
@@ -72,7 +88,7 @@ public class AlarmReceiver  extends BroadcastReceiver {
         wl.acquire();
 
         /* shows the notifcation and toast */
-        PersonalToast.toastMessage(context, "Dançando no ritmo do carreta furacão");
+        PersonalToast.toastMessage(context, context.getString(R.string.drougs_notification));
         raiseDrugNotification(context);
         playAlarm(context);
 
