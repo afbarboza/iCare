@@ -17,7 +17,9 @@
 
 package com.example.icare.icare;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -34,13 +36,18 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import static android.app.PendingIntent.getActivity;
+
 public class GoogleAuthentication extends AppCompatActivity {
 
     SignInButton btnLogin;
 
-    /* A client for interacting with the Google Sign In API. */
+    /* A client for interacting with the Google Sign In API. account*/
     private GoogleSignInClient mGoogleSignInClient;
     private static  final int RC_SIGN_IN = 999;
+    private static String caregiverMail = "alex.barboza@usp.br";
+    private static String caregiverid = "1";
+
 
     /**
      * warnWrongEmail - alerts user that the inserted email and/or password is not correct
@@ -60,6 +67,14 @@ public class GoogleAuthentication extends AppCompatActivity {
         if (account == null) {
             warnWrongEmail();
         } else {
+            caregiverMail = (String) account.getEmail();
+            caregiverid = (String) account.getIdToken();
+
+            SharedPreferences sharedPref = getSharedPreferences("caregiverMail", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("caregiverMail", caregiverMail );
+            editor.apply();
+
             PersonalToast.toastMessage(this, getString(R.string.activity_googleauthentication_success));
             Intent i = new Intent(this, CaregiverDashboard.class);
             startActivity(i);
@@ -129,8 +144,6 @@ public class GoogleAuthentication extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_authentication);
 
-
-
         /* initialize graphical elements here */
         btnLogin = (SignInButton) findViewById(R.id.btn_gmail_login);
 
@@ -150,5 +163,7 @@ public class GoogleAuthentication extends AppCompatActivity {
             }
         });
         Log.i("alex", "Google authentication done. ");
+
+
     }
 }

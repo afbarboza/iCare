@@ -44,6 +44,25 @@ public class InsertDrug extends AppCompatActivity {
     EditText txtDrougPeriod;
     EditText txtDrougObservations;
     Button saveDrougRegister;
+    private boolean recording = false;
+    AudioAlarm am = null;
+    Button btnRecordAudioReminder;
+
+    public void handleAudioRecord() {
+        if (recording == false) {
+            am = new AudioAlarm(this, txtDrougName.getText().toString());
+
+            /* record audio */
+            recording = true;
+            btnRecordAudioReminder.setText(getString(R.string.drougs_recording));
+            am.initAudioRecord();
+        } else {
+            /* stop record audio */
+            recording = false;
+            btnRecordAudioReminder.setText(getString(R.string.drougs_recorded));
+            am.stopAudioRecord();
+        }
+    }
 
     /**
      * dispatchTakePictureIntent - takes a photo from user.
@@ -80,8 +99,10 @@ public class InsertDrug extends AppCompatActivity {
         txtDrougObservations = (EditText) findViewById(R.id.txtObservationsInsertDroug);
         txtDrougPeriod = (EditText) findViewById(R.id.txtPeriodInsertDroug);
         saveDrougRegister = (Button) findViewById(R.id.save_droug_register);
+
         /* initialize graphical componentes here */
         imgDrugPhoto = (ImageView) findViewById(R.id.imgDrugPhoto);
+        btnRecordAudioReminder = (Button) findViewById(R.id.btnRecordAudioReminder);
 
 
         saveDrougRegister.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +113,8 @@ public class InsertDrug extends AppCompatActivity {
                 String drougPeriod = txtDrougPeriod.getText().toString();
                 String drougObservations = txtDrougObservations.getText().toString();
 
+                DrugAlarm d = new DrugAlarm();
+                d.addAlarm(InsertDrug.this, Integer.parseInt(drougPeriod), Integer.parseInt(drougPeriod), txtDrougName.getText().toString());
 
                 Droug droug = new Droug();
                 droug.setName(drougName);
@@ -102,6 +125,13 @@ public class InsertDrug extends AppCompatActivity {
                 Intent it = new Intent(InsertDrug.this, CaregiverDashboard.class);
                 it.putExtra("newDroug", (Serializable) droug);
                 startActivity(it);
+            }
+        });
+
+        btnRecordAudioReminder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleAudioRecord();
             }
         });
 

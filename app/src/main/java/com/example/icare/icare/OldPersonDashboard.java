@@ -18,7 +18,9 @@
 package com.example.icare.icare;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -66,11 +68,11 @@ public class OldPersonDashboard extends AppCompatActivity
     private DatabaseReference ref;
     private static boolean calledAlready = false;
 
-    public void addAlarm(View v) {
-        /* sets an test alarm */
+    /*public void addAlarm(View v) {
+
         DrugAlarm d = new DrugAlarm();
         d.addAlarm(this, 1, 1);
-    }
+    }*/
 
     public void handleAudioRecord(View v) {
         if (recording == false) {
@@ -87,7 +89,7 @@ public class OldPersonDashboard extends AppCompatActivity
             am.stopAudioRecord();
         }
     }
-c
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -191,7 +193,9 @@ c
      * @return
      */
     public String retrieveCaregiverEmail() {
-        return "alex.barboza@usp.br";
+        SharedPreferences sharedPreferences = getSharedPreferences("caregiverMail", Context.MODE_PRIVATE);
+        String result = sharedPreferences.getString("caregiverMail", "alex.barboza@usp.br");
+        return result;
     }
 
     /**

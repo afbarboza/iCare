@@ -24,8 +24,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.media.MediaRecorder;
+import android.os.Environment;
+import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.os.PowerManager;
+
+import java.io.IOException;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static android.content.Intent.FLAG_ACTIVITY_REORDER_TO_FRONT;
@@ -40,9 +45,24 @@ public class AlarmReceiver  extends BroadcastReceiver {
      * Displays personalized song when it's time to take the medicine
      * @param appContext: the current app context running
      */
-    private void playAlarm(Context appContext) {
+    private void playAlarm(Context appContext, Intent it) {
+        /* plays default songs */
         MediaPlayer mp = MediaPlayer.create(appContext, R.raw.ganhou1);
-        for (int i = 0; i < 5; i++) {
+        mp.start();
+
+        /* gets audio file name */
+        String audio = it.getStringExtra("audio_file");
+        String audioSavePathInDevice = Environment.getExternalStorageDirectory().getAbsolutePath()
+                + "/" + audio + ".3gp";
+
+        /* set up media player */
+        mp = new MediaPlayer();
+        try {
+            mp.setDataSource(audioSavePathInDevice);
+            mp.prepare();
+            mp.start();
+        } catch (IOException e) {
+            mp = MediaPlayer.create(appContext, R.raw.ganhou1);
             mp.start();
         }
     }
@@ -90,9 +110,14 @@ public class AlarmReceiver  extends BroadcastReceiver {
         /* shows the notifcation and toast */
         PersonalToast.toastMessage(context, context.getString(R.string.drougs_notification));
         raiseDrugNotification(context);
-        playAlarm(context);
+        playAlarm(context, intent);
 
         /* release the screen power manager */
         wl.release();
+
+        /* vibrates the device for 4 seconds */
+        Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(4000);
+
     }
 }

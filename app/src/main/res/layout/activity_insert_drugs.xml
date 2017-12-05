@@ -71,8 +71,8 @@
             android:inputType="phone"
             android:typeface="monospace"
             mask:allowed_chars="1234567890"
-            mask:mask="##h"
-            android:hint="03h"/>
+            mask:mask="##"
+            android:hint="03"/>
 
         <EditText
             android:id="@+id/txtObservationsInsertDroug"
@@ -87,17 +87,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/save_droug_register"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="salvar"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="@android:color/holo_green_dark"
-                android:paddingHorizontal="100dp"
-                android:textColor="@android:color/white"
-                android:layout_centerHorizontal="true"/>
+                android:layout_height="wrap_content">
+
+
+                <Button
+                    android:id="@+id/btnRecordAudioReminder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="microphone" />
+
+                <Button
+                    android:id="@+id/save_droug_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="salvar"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="@android:color/holo_green_dark"
+                    android:paddingHorizontal="100dp"
+                    android:textColor="@android:color/white"
+                    android:layout_centerHorizontal="true"/>
+
+            </LinearLayout>
+
+
 
         </RelativeLayout>
 

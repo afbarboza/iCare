@@ -41,10 +41,10 @@
     <!--  Activity Old Person Dashboard Strings -->
     <string name="old_dashboard_error">Erro: </string>
     <string name="old_dashboard_gpserror">Ative e permita o uso do GPS</string>
-    <string name="old_dashboard_gpsok">GSP Ativado e em uso</string>
+    <string name="old_dashboard_gpsok">GPS Ativado e em uso</string>
     <string name="old_invalid_addr">Localização inválida</string>
     <string name="old_email_title">Última localização:</string>
     <string name="old_email_body">Olá, a última localização foi:\n</string>
-    <string name="old_mail_sending">Enviando email...</string>
+    <string name="old_mail_sending">Deseja enviar sua localização?</string>
 
 </resources>

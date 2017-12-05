@@ -32,16 +32,14 @@ import android.os.SystemClock;
 public class DrugAlarm {
     private static int i = 0;
 
-    public void addAlarm(Context appContext, int initHour, int frequency) {
+    public void addAlarm(Context appContext, int initHour, int frequency, String audio) {
         AlarmManager manager = (AlarmManager) appContext.getSystemService(Context.ALARM_SERVICE);
         Intent myIntent = new Intent(appContext, AlarmReceiver.class);
+        myIntent.putExtra("audio_file", audio);
         i++;
-        myIntent.putExtra("msg", "" + i);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(appContext, i, myIntent, 0);
         manager.setRepeating(AlarmManager.RTC_WAKEUP,
                 SystemClock.elapsedRealtime() + (initHour * 1000),
                 frequency * 1000, pendingIntent);
-
-
     }
 }

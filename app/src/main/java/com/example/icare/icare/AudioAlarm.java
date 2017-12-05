@@ -51,7 +51,6 @@ public class AudioAlarm {
         this.app = app;
         this.audioSavePathInDevice = Environment.getExternalStorageDirectory().getAbsolutePath()
                 + "/" + fileName + ".3gp";
-        //this.audioSavePathInDevice = "./" + fileName + ".3gp";
     }
 
     /**
