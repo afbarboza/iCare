@@ -32,7 +32,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
-
+import android.view.View;
+import android.widget.Button;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -54,6 +55,9 @@ public class OldPersonDashboard extends AppCompatActivity
 {
     /* request code to use GPS */
     private static final int MY_PERMISSION_REQUEST_LOCATION = 99;
+    public boolean recording = false;
+    public AudioAlarm am = null;
+    Button btnRecordAudioReminder;
 
     /* API Client to use GPS */
     GoogleApiClient mGoogleApiClient;
@@ -62,6 +66,28 @@ public class OldPersonDashboard extends AppCompatActivity
     private DatabaseReference ref;
     private static boolean calledAlready = false;
 
+    public void addAlarm(View v) {
+        /* sets an test alarm */
+        DrugAlarm d = new DrugAlarm();
+        d.addAlarm(this, 1, 1);
+    }
+
+    public void handleAudioRecord(View v) {
+        if (recording == false) {
+            am = new AudioAlarm(this, "test");
+
+            /* record audio */
+            recording = true;
+            btnRecordAudioReminder.setText(getString(R.string.drougs_recording));
+            am.initAudioRecord();
+        } else {
+            /* stop record audio */
+            recording = false;
+            btnRecordAudioReminder.setText(getString(R.string.drougs_recorded));
+            am.stopAudioRecord();
+        }
+    }
+c
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +126,8 @@ public class OldPersonDashboard extends AppCompatActivity
 
             }
         });
+        /* initializes graphical component here */
+        btnRecordAudioReminder = (Button) findViewById(R.id.btnRecordAudioReminder);
 
         /* initializes the google API client to use GPS */
         if (checkLocationPermission()) {
@@ -111,10 +139,6 @@ public class OldPersonDashboard extends AppCompatActivity
                         .build();
             }
         }
-
-        /* sets an test alarm */
-        DrugAlarm d = new DrugAlarm();
-        d.addAlarm(this, 1, 1);
     }
 
     public void createListView(List<Droug> drougList){

@@ -29,6 +29,7 @@ class Droug implements Serializable{
     private String Period;
     private String Observations;
 
+
     public Droug() {
     }
 

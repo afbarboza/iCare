@@ -45,8 +45,6 @@ public class InsertDrug extends AppCompatActivity {
     EditText txtDrougObservations;
     Button saveDrougRegister;
 
-
-
     /**
      * dispatchTakePictureIntent - takes a photo from user.
      */
