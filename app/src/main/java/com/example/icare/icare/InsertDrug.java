@@ -23,7 +23,11 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+
+import java.io.Serializable;
 
 /**
  * Created by alex on 03/12/17.
@@ -35,6 +39,11 @@ public class InsertDrug extends AppCompatActivity {
     static final int CAMERA_PIC_REQUEST = 1;
     /* stores the bitmap of drug photo */
     ImageView imgDrugPhoto;
+    EditText txtDrougName;
+    EditText txtDrougDosage ;
+    EditText txtDrougPeriod;
+    EditText txtDrougObservations;
+    Button saveDrougRegister;
 
 
 
@@ -68,8 +77,35 @@ public class InsertDrug extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_drugs);
 
+        txtDrougName = (EditText) findViewById(R.id.txtNameInsertDroug);
+        txtDrougDosage = (EditText) findViewById(R.id.txtDosageInsertDroug);
+        txtDrougObservations = (EditText) findViewById(R.id.txtObservationsInsertDroug);
+        txtDrougPeriod = (EditText) findViewById(R.id.txtPeriodInsertDroug);
+        saveDrougRegister = (Button) findViewById(R.id.save_droug_register);
         /* initialize graphical componentes here */
         imgDrugPhoto = (ImageView) findViewById(R.id.imgDrugPhoto);
+
+
+        saveDrougRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String drougName = txtDrougName.getText().toString();
+                String drougDosage = txtDrougDosage.getText().toString();
+                String drougPeriod = txtDrougPeriod.getText().toString();
+                String drougObservations = txtDrougObservations.getText().toString();
+
+
+                Droug droug = new Droug();
+                droug.setName(drougName);
+                droug.setDosage(drougDosage);
+                droug.setPeriod(drougPeriod);
+                droug.setObservations(drougObservations);
+
+                Intent it = new Intent(InsertDrug.this, CaregiverDashboard.class);
+                it.putExtra("newDroug", (Serializable) droug);
+                startActivity(it);
+            }
+        });
 
 
         /*defines behavior of graphical components here */

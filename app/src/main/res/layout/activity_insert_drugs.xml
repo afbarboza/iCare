@@ -22,7 +22,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.icare.icare.InsertOldPerson">
+    tools:context="com.example.icare.icare.InsertDrug">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
         </RelativeLayout>
 
         <EditText
-            android:id="@+id/txtOldName"
+            android:id="@+id/txtNameInsertDroug"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/drougs_name"
@@ -54,7 +54,7 @@
             android:layout_marginRight="10dp"/>
 
         <EditText
-            android:id="@+id/txtNameInsertDroug"
+            android:id="@+id/txtDosageInsertDroug"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -62,7 +62,7 @@
             android:hint="@string/drougs_dosage" />
 
         <br.com.sapereaude.maskedEditText.MaskedEditText
-            android:id="@+id/txtOldPhoneNumber"
+            android:id="@+id/txtPeriodInsertDroug"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/save_old_register"
+                android:id="@+id/save_droug_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="salvar"

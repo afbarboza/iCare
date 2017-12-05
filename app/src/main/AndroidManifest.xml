@@ -36,6 +36,7 @@
         <activity android:name=".GoogleAuthentication" />
         <activity android:name=".CaregiverDashboard" />
         <activity android:name=".InsertOldPerson" />
+        <activity android:name=".InsertDrug" />
         <activity android:name=".OldPersonDashboard" />
         <activity android:name=".CaregiverDashboardDrougs"></activity>
         <receiver android:name=".AlarmReceiver" />

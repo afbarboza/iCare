@@ -17,30 +17,34 @@
 
 package com.example.icare.icare;
 
-import android.*;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.provider.ContactsContract;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -54,10 +58,48 @@ public class OldPersonDashboard extends AppCompatActivity
     /* API Client to use GPS */
     GoogleApiClient mGoogleApiClient;
 
+    private FirebaseDatabase database;
+    private DatabaseReference ref;
+    private static boolean calledAlready = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_old_person_dashboard);
+
+        FirebaseApp.initializeApp(OldPersonDashboard.this);
+        Log.i("alex", "Firebase initialized.");
+
+        if (!calledAlready){
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            calledAlready = true;
+        }
+        Log.i("alex", "Local persistence enabled");
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        ref = database.getReference();
+
+        ref.child("drougs").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Droug> listOfDrougs = new ArrayList<Droug>();
+                listOfDrougs.clear();
+                for(DataSnapshot objectSnapshot: dataSnapshot.getChildren()){
+                    Droug drougReceived = objectSnapshot.getValue(Droug.class);
+                    listOfDrougs.add(drougReceived);
+                    Log.e("testeGiovanni", drougReceived.getName());
+                }
+
+                if(!listOfDrougs.isEmpty() && listOfDrougs != null)
+                createListView(listOfDrougs);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         /* initializes the google API client to use GPS */
         if (checkLocationPermission()) {
@@ -73,6 +115,12 @@ public class OldPersonDashboard extends AppCompatActivity
         /* sets an test alarm */
         DrugAlarm d = new DrugAlarm();
         d.addAlarm(this, 1, 1);
+    }
+
+    public void createListView(List<Droug> drougList){
+        ListView lv_OldPerson = (ListView) findViewById(R.id.lv_old_person_drougs);
+        final ListDrougsAdapter listDrougsAdapter = new ListDrougsAdapter(OldPersonDashboard.this, drougList);
+        lv_OldPerson.setAdapter(listDrougsAdapter);
     }
 
     /**

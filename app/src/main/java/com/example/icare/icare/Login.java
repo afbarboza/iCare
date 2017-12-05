@@ -30,8 +30,8 @@ public class Login extends AppCompatActivity {
      *  GoogleAuthentication acitivity
      */
     private void gotoGoogleAuthentication() {
-        Intent i = new Intent(Login.this, GoogleAuthentication.class);
-        //Intent i = new Intent(Login.this, CaregiverDashboard.class);
+        //Intent i = new Intent(Login.this, GoogleAuthentication.class);
+        Intent i = new Intent(Login.this, CaregiverDashboard.class);
         startActivity(i);
     }
 

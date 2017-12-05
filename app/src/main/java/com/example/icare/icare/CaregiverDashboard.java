@@ -20,11 +20,9 @@ package com.example.icare.icare;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.FirebaseApp;
@@ -34,22 +32,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CaregiverDashboard extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference ref;
     private static boolean calledAlready = false;
-    private FloatingActionButton btn_add_person;
     /**
      * Handles the Add Old Person button click event, redirecting to the Insert Old Person view.
      *
      * @param v: basic building block for user interface components
      */
     public void handleAddOldPerson(View v) {
-        Intent i = new Intent(this, InsertOldPerson.class);
+        Intent i = new Intent(this, InsertDrug.class);
         startActivity(i);
     }
 
@@ -57,7 +54,6 @@ public class CaregiverDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_caregiver_dashboard);
-        btn_add_person = findViewById(R.id.btn_add_old_person);
 
         FirebaseApp.initializeApp(CaregiverDashboard.this);
         Log.i("alex", "Firebase initialized.");
@@ -73,23 +69,28 @@ public class CaregiverDashboard extends AppCompatActivity {
         ref = database.getReference();
 
         Intent it = getIntent();
-        final OldPerson oldPerson = (OldPerson) it.getSerializableExtra("oldPerson");
-        if(oldPerson != null) {
-            ref.child("olds").child(oldPerson.getPhone()).setValue(oldPerson);
+
+        final Droug newDroug = (Droug) it.getSerializableExtra("newDroug");
+        if(newDroug != null) {
+            Random random = new Random();
+            Integer intRand = random.nextInt(9999);
+            Log.i("debugGiovanni", newDroug.getName());
+
+            ref.child("drougs").child(intRand.toString()).setValue(newDroug);
         }
 
-        ref.child("olds").addValueEventListener(new ValueEventListener() {
+        ref.child("drougs").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                List<OldPerson> listOfOlds = new ArrayList<OldPerson>();
-                listOfOlds.clear();
+                List<Droug> listOfDrougs = new ArrayList<Droug>();
+                listOfDrougs.clear();
                 for(DataSnapshot objectSnapshot: dataSnapshot.getChildren()){
-                    OldPerson oldPersonReceived = objectSnapshot.getValue(OldPerson.class);
-                    listOfOlds.add(oldPersonReceived);
-                    Log.e("testeGiovanni", oldPersonReceived.getName());
+                    Droug drougReceived = objectSnapshot.getValue(Droug.class);
+                    listOfDrougs.add(drougReceived);
+                    Log.e("testeGiovanni", drougReceived.getName());
                 }
 
-                createListView(listOfOlds);
+                createListView(listOfDrougs);
             }
 
             @Override
@@ -100,20 +101,9 @@ public class CaregiverDashboard extends AppCompatActivity {
 
     }
 
-    public void createListView(List<OldPerson> oldPersonList){
+    public void createListView(List<Droug> drougList){
         ListView lv_OldPerson = (ListView) findViewById(R.id.lv_olds);
-        final ListOldsAdapter listOldsAdapter = new ListOldsAdapter(CaregiverDashboard.this, oldPersonList);
-        lv_OldPerson.setAdapter(listOldsAdapter);
-
-        lv_OldPerson.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.e("testeGiovanniclick", listOldsAdapter.getItem(i).toString());
-                Intent intent = new Intent(CaregiverDashboard.this, CaregiverDashboardDrougs.class);
-                intent.putExtra("selectedOld", (Serializable) listOldsAdapter.getItem(i));
-                startActivity(intent);
-            }
-        });
-
+        final ListDrougsAdapter listDrougsAdapter = new ListDrougsAdapter(CaregiverDashboard.this, drougList);
+        lv_OldPerson.setAdapter(listDrougsAdapter);
     }
 }

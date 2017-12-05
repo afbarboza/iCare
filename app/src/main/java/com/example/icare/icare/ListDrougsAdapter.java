@@ -58,7 +58,7 @@ public class ListDrougsAdapter extends BaseAdapter {
         View rowView = act.getLayoutInflater().inflate(R.layout.activity_caregiver_dashboard_list_drougs_adapter, parent, false);
 
 
-        ImageView oldPhoto = (ImageView) rowView.findViewById(R.id.imgDrugPhoto);
+        ImageView oldPhoto = (ImageView) rowView.findViewById(R.id.iv_old_portrait);
         TextView name = (TextView) rowView.findViewById(R.id.tv_droug_name);
         TextView period = (TextView) rowView.findViewById(R.id.drougs_period);
         TextView observations = (TextView) rowView.findViewById(R.id.drougs_observation);

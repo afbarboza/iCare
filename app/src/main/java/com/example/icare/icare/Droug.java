@@ -24,10 +24,10 @@ import java.io.Serializable;
  */
 
 class Droug implements Serializable{
-    String name;
-    String dosage;
-    String Period;
-    String Observations;
+    private String name;
+    private String dosage;
+    private String Period;
+    private String Observations;
 
     public Droug() {
     }
